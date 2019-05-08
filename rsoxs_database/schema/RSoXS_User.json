@@ -57,6 +57,25 @@
     },
     "notes": {
       "type": "string"
+    },
+
+    "history": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "datetime": {
+              "type": "string",
+              "format": "date"
+            },
+            "action": {
+              "type": "string"
+            }
+          }
+        }
+      ]
     }
   },
   "required": [
@@ -69,6 +88,8 @@
     "institution_id",
     "proposal_id",
     "date_checkin_list",
-    "past_institutions"
+    "past_institutions",
+    "history"
+
   ]
 }

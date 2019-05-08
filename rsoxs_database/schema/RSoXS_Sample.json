@@ -55,9 +55,27 @@
     "location_id": {
       "type": "number"
     },
+    "history": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "datetime": {
+              "type": "string",
+              "format": "date"
+            },
+            "action": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
     "collections": {
       "type": "array",
-      "uniqueItems": True,
+      "uniqueItems": true,
       "items": [
         {
           "type": "object",
@@ -70,11 +88,35 @@
             },
             "location_id": {
               "type": "number"
+            },
+            "started": {
+              "type": "boolean"
+            },
+            "completed": {
+              "type": "boolean"
+            },
+            "analyzed": {
+              "type": "boolean"
+            },
+            "started uid": {
+              "type": "number"
+            },
+            "completed uid": {
+              "type": "number"
+            },
+            "analyzed uid": {
+              "type": "number"
             }
           },
           "required": [
             "configuration_id",
-            "acquisition_id"
+            "acquisition_id",
+            "completed",
+            "completed_uid",
+            "started",
+            "started_uid",
+            "analyzed",
+            "analyzed_uid"
           ]
         }
       ]

@@ -14,6 +14,9 @@
             },
             "position": {
               "type": "number"
+            },
+            "order": {
+              "type": "number"
             }
           },
           "required": [
@@ -36,11 +39,20 @@
     },
     "creator_ID": {
       "type": "number"
+    },
+    "sample": {
+      "type": "boolean"
+    },
+    "config": {
+      "type": "boolean"
     }
   },
   "required": [
     "location_list",
     "display",
-    "favorite"
+    "favorite",
+    "sample",
+    "config",
+    "creator_ID"
   ]
 }
