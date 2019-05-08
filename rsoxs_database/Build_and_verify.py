@@ -2,7 +2,7 @@ import jsonschema
 
 
 def build_and_verify_user(date_list,email, first_name, institution_id, last_checkin, last_name, notes,
-                          past_institutions,past_proposals, phone, proposal_id, user_id, username, history):
+                          past_institutions, past_proposals, phone, proposal_id, user_id, username, history):
 
     user = {'date_checkin_list': date_list,
             'email': email,
@@ -19,14 +19,15 @@ def build_and_verify_user(date_list,email, first_name, institution_id, last_chec
             'username': username,
             'history': history}
 
-    jsonschema.validate(user,{'$ref': 'file:/Users/greateyes/.ipython/profile_collection/startup/schema/'
+    jsonschema.validate(user,{'$ref': 'file:schema/'
                                       'RSoXS_User.json'})
     return user
 
 
 def build_and_verify_sample(sample_name, sample_desc, date_created, user_id, project_name, institution_id,
                             composition, density, thickness, notes, state, current_bar_id, current_slot_name,
-                            past_bar_ids, location_id, collections, history):
+                            past_bar_ids, location_id, requests, history):
+
     sample = {"sample_name": sample_name,
               "sample_desc": sample_desc,
               "date_created": date_created,
@@ -42,7 +43,7 @@ def build_and_verify_sample(sample_name, sample_desc, date_created, user_id, pro
               "current_slot_name": current_slot_name,
               "past_bar_ids": past_bar_ids,
               "location_id": location_id,
-              "collections": collections,
+              "requests": requests,
               "history": history
               }
 

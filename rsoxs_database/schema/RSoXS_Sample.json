@@ -73,7 +73,7 @@
         }
       ]
     },
-    "collections": {
+    "requests": {
       "type": "array",
       "uniqueItems": true,
       "items": [
@@ -133,6 +133,6 @@
     "location_id",
     "current_bar_id",
     "current_slot_name",
-    "collections"
+    "requests"
   ]
 }
