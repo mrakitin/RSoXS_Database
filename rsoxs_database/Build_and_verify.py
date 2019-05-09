@@ -1,4 +1,24 @@
-import jsonschema, datetime
+import jsonschema, json
+from datetime import datetime
+import os
+
+my_path = os.path.abspath(os.path.dirname(__file__))
+path = os.path.join(my_path, "schema")
+
+
+
+with open(os.path.join(path, 'RSoXS_User.json')) as json_data:
+    user_schema = json.load(json_data)
+with open(os.path.join(path, 'RSoXS_Acquisition.json')) as json_data:
+    acquisition_schema = json.load(json_data)
+with open(os.path.join(path, 'RSoXS_Institution.json')) as json_data:
+    institution_schema = json.load(json_data)
+with open(os.path.join(path, 'RSoXS_Holder.json')) as json_data:
+    holder_schema = json.load(json_data)
+with open(os.path.join(path, 'RSoXS_Location.json')) as json_data:
+    location_schema = json.load(json_data)
+with open(os.path.join(path, 'RSoXS_Sample.json')) as json_data:
+    sample_schema = json.load(json_data)
 
 
 def build_and_verify_user(*,date_list=[],email='', first_name='User', institution_id=0,
@@ -21,8 +41,7 @@ def build_and_verify_user(*,date_list=[],email='', first_name='User', institutio
             'username': username,
             'history': history}
 
-    jsonschema.validate(user,{'$ref': 'file:schema/'
-                                      'RSoXS_User.json'})
+    jsonschema.validate(user,user_schema)
 
     return user
 
@@ -52,8 +71,7 @@ def build_and_verify_sample(*, sample_name='test', sample_desc='testing',
               "history": history
               }
 
-    jsonschema.validate(sample,{'$ref': 'file:/Users/greateyes/.ipython/profile_collection/startup/schema/'
-                                        'RSoXS_Sample.json'})
+    jsonschema.validate(sample,sample_schema)
     return sample
 
 
@@ -68,8 +86,7 @@ def build_and_verify_location(*,location_list=[],display='private', favorite=Fal
                 "config": config
                 }
 
-    jsonschema.validate(location,{'$ref': 'file:/Users/greateyes/.ipython/profile_collection/startup/schema/'
-                                          'RSoXS_Location.json'})
+    jsonschema.validate(location,location_schema)
     return location
 
 
@@ -83,8 +100,7 @@ def build_and_verify_institution(*,institution_id=0, full_name='School of Hard K
         "notes": notes
     }
 
-    jsonschema.validate(institution,{'$ref': 'file:/Users/greateyes/.ipython/profile_collection/startup/schema/'
-                                             'RSoXS_Institution.json'})
+    jsonschema.validate(institution,institution_schema)
     return institution
 
 
@@ -104,12 +120,11 @@ def build_and_verify_holder(*, holder_id=0, holder_name='Default', primary_user_
         'history': history
     }
 
-    jsonschema.validate(holder,{'$ref': 'file:/Users/greateyes/.ipython/profile_collection/startup/schema/'
-                                        'RSoXS_Holder.json'})
+    jsonschema.validate(holder,holder_schema)
     return holder
 
 
-def build_and_verify_acquisition(*,plan_name='none',detectors=[], motors=[], positions=[], display=False,
+def build_and_verify_acquisition(*,plan_name='none',detectors=[], motors=[], positions=[], display='private',
                                  favorite=False, creator_id=0):
 
     acquisition = {
@@ -122,6 +137,5 @@ def build_and_verify_acquisition(*,plan_name='none',detectors=[], motors=[], pos
         "creator_id": creator_id
     }
 
-    jsonschema.validate(acquisition,{'$ref': 'file:/Users/greateyes/.ipython/profile_collection/startup/schema/'
-                                             'RSoXS_Acquisition.json'})
+    jsonschema.validate(acquisition,acquisition_schema)
     return acquisition
