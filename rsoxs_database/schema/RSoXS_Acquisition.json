@@ -40,7 +40,7 @@
     "favorite": {
       "type": "boolean"
     },
-    "creator_ID": {
+    "creator_id": {
       "type": "number"
     }
   },

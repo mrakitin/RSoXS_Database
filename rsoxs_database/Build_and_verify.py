@@ -1,8 +1,10 @@
-import jsonschema
+import jsonschema, datetime
 
 
-def build_and_verify_user(date_list,email, first_name, institution_id, last_checkin, last_name, notes,
-                          past_institutions, past_proposals, phone, proposal_id, user_id, username, history):
+def build_and_verify_user(*,date_list=[],email='', first_name='User', institution_id=0,
+                          last_checkin=datetime.now().strftime('%G-%m-%d-%I:%M:%S %p'), last_name='McUserface',
+                          notes='', past_institutions=[], past_proposals=[], phone='555-555-5555',
+                          proposal_id=0, user_id=0, username='CantFollowDirections', history=[]):
 
     user = {'date_checkin_list': date_list,
             'email': email,
@@ -21,12 +23,15 @@ def build_and_verify_user(date_list,email, first_name, institution_id, last_chec
 
     jsonschema.validate(user,{'$ref': 'file:schema/'
                                       'RSoXS_User.json'})
+
     return user
 
 
-def build_and_verify_sample(sample_name, sample_desc, date_created, user_id, project_name, institution_id,
-                            composition, density, thickness, notes, state, current_bar_id, current_slot_name,
-                            past_bar_ids, location_id, requests, history):
+def build_and_verify_sample(*, sample_name='test', sample_desc='testing',
+                            date_created=datetime.now().strftime('%G-%m-%d-%I:%M:%S %p'), user_id=0,
+                            project_name='testing', institution_id=0, composition=[], density=1, thickness=1,
+                            notes='', state='fresh', current_bar_id=0, current_slot_name='blank',
+                            past_bar_ids=[], location_id=0, requests=[], history=[]):
 
     sample = {"sample_name": sample_name,
               "sample_desc": sample_desc,
@@ -52,7 +57,8 @@ def build_and_verify_sample(sample_name, sample_desc, date_created, user_id, pro
     return sample
 
 
-def build_and_verify_location(location_list,display, favorite, creator_id, sample, config):
+def build_and_verify_location(*,location_list=[],display=False, favorite=False,
+                              creator_id=0, sample=False, config=False):
 
     location = {"location_list": location_list,
                 "display": display,
@@ -67,7 +73,8 @@ def build_and_verify_location(location_list,display, favorite, creator_id, sampl
     return location
 
 
-def build_and_verify_institution(institution_id, full_name, short_name, notes):
+def build_and_verify_institution(*,institution_id=0, full_name='School of Hard Knocks', short_name='the_street',
+                                 notes=''):
 
     institution = {
         "institution_id": institution_id,
@@ -81,8 +88,9 @@ def build_and_verify_institution(institution_id, full_name, short_name, notes):
     return institution
 
 
-def build_and_verify_holder(holder_id,holder_name, primary_user_id, primary_institution_id, primary_proposal_id,
-                            date_loaded_list, notes, slots, history):
+def build_and_verify_holder(*, holder_id=0, holder_name='Default', primary_user_id=0, primary_institution_id=0,
+                            primary_proposal_id=0, date_loaded_list=[datetime.now().strftime('%G-%m-%d-%I:%M:%S %p')],
+                            notes='', slots=[], history=[]):
 
     holder = {
         "holder_id": holder_id,
@@ -101,23 +109,8 @@ def build_and_verify_holder(holder_id,holder_name, primary_user_id, primary_inst
     return holder
 
 
-def build_and_verify_configuration(plan_name,motors, positions, display, favorite, creator_ID):
-
-    configuration = {
-        "plan_name": plan_name,
-        "motors": motors,
-        "positions": positions,
-        "display": display,
-        "favorite": favorite,
-        "creator_ID": creator_ID,
-    }
-
-    jsonschema.validate(configuration,{'$ref': 'file:/Users/greateyes/.ipython/profile_collection/startup/schema/'
-                                               'RSoXS_Configuration.json'})
-    return configuration
-
-
-def build_and_verify_acquisition(plan_name,detectors, motors, positions, display, favorite, creator_ID):
+def build_and_verify_acquisition(*,plan_name='none',detectors=[], motors=[], positions=[], display=False,
+                                 favorite=False, creator_id=0):
 
     acquisition = {
         "plan_name": plan_name,
@@ -126,7 +119,7 @@ def build_and_verify_acquisition(plan_name,detectors, motors, positions, display
         "positions": positions,
         "display": display,
         "favorite": favorite,
-        "creator_ID": creator_ID
+        "creator_id": creator_id
     }
 
     jsonschema.validate(acquisition,{'$ref': 'file:/Users/greateyes/.ipython/profile_collection/startup/schema/'
