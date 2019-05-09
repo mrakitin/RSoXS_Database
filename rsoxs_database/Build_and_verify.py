@@ -57,7 +57,7 @@ def build_and_verify_sample(*, sample_name='test', sample_desc='testing',
     return sample
 
 
-def build_and_verify_location(*,location_list=[],display=False, favorite=False,
+def build_and_verify_location(*,location_list=[],display='private', favorite=False,
                               creator_id=0, sample=False, config=False):
 
     location = {"location_list": location_list,
