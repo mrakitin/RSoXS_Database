@@ -5,8 +5,6 @@ import os
 my_path = os.path.abspath(os.path.dirname(__file__))
 path = os.path.join(my_path, "schema")
 
-
-
 with open(os.path.join(path, 'RSoXS_User.json')) as json_data:
     user_schema = json.load(json_data)
 with open(os.path.join(path, 'RSoXS_Acquisition.json')) as json_data:
