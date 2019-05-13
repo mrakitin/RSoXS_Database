@@ -147,5 +147,7 @@ def new_bar():
         slotname = input('move, then add another slot name for this location (blank to end): ')
     print('added {} slots'.format(len(slots)))
 
-def new_slot_nere():
-    slot =
+def new_slot_nere(slot_name):
+    return name
+    # use the current sample position and bar, and add a slot entry to the bar with that location and the input name
+

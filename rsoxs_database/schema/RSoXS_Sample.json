@@ -55,6 +55,9 @@
     "location_id": {
       "type": "number"
     },
+    "priority": {
+      "type": "number"
+    },
     "history": {
       "type": "array",
       "uniqueItems": true,
@@ -133,6 +136,7 @@
     "location_id",
     "current_bar_id",
     "current_slot_name",
-    "requests"
+    "requests",
+    "priority"
   ]
 }

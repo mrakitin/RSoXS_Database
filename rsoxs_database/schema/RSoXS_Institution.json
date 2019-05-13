@@ -14,11 +14,15 @@
     },
     "notes": {
       "type": "string"
+    },
+    "priority": {
+      "type": "number"
     }
   },
   "required": [
     "institution_id",
     "full_name",
-    "short_name"
+    "short_name",
+    "priority"
   ]
 }

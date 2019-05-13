@@ -58,6 +58,9 @@
     "notes": {
       "type": "string"
     },
+    "priority": {
+      "type": "number"
+    },
 
     "history": {
       "type": "array",
@@ -89,7 +92,8 @@
     "proposal_id",
     "date_checkin_list",
     "past_institutions",
-    "history"
+    "history",
+    "priority"
 
   ]
 }

@@ -42,6 +42,9 @@
     },
     "creator_id": {
       "type": "number"
+    },
+    "priority": {
+      "type": "number"
     }
   },
   "required": [
@@ -49,6 +52,7 @@
     "motors",
     "positions",
     "display",
-    "favorite"
+    "favorite",
+    "priority"
   ]
 }
