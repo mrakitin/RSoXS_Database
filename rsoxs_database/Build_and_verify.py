@@ -1,22 +1,28 @@
+import pkg_resources
 import jsonschema, json
 from datetime import datetime
 import os
 
-my_path = os.path.abspath(os.path.dirname(__file__))
-path = os.path.join(my_path, "schema")
 
-with open(os.path.join(path, 'RSoXS_User.json')) as json_data:
-    user_schema = json.load(json_data)
-with open(os.path.join(path, 'RSoXS_Acquisition.json')) as json_data:
-    acquisition_schema = json.load(json_data)
-with open(os.path.join(path, 'RSoXS_Institution.json')) as json_data:
-    institution_schema = json.load(json_data)
-with open(os.path.join(path, 'RSoXS_Holder.json')) as json_data:
-    holder_schema = json.load(json_data)
-with open(os.path.join(path, 'RSoXS_Location.json')) as json_data:
-    location_schema = json.load(json_data)
-with open(os.path.join(path, 'RSoXS_Sample.json')) as json_data:
-    sample_schema = json.load(json_data)
+def load_schema(filename):
+    "Use pkg_resources the file in the installation; parse JSON; return dict."
+    # Depending on how the package was installed, it might be located in
+    # different places. This is the safe way to locate it that should always
+    # work.
+    relative_filepath = os.path.join('schema', filename)
+    abs_filepath = pkg_resources.resource_filename('rsoxs_database',
+                                                   relative_filepath)
+    with open(abs_filepath) as json_data:
+        parsed = json.load(json_data)
+    return parsed
+
+
+user_schema = load_schema('RSoXS_User.json')
+acuisition_schema = load_schema('RSoXS_Acquisition.json')
+institution_schema = load_schema('RSoXS_Institution.json')
+holder_schema = load_schema('RSoXS_Holder.json')
+location_schema = load_schema('RSoXS_Location.json')
+sample_schema = load_schema('RSoXS_Sample.json')
 
 
 def build_and_verify_user(*,date_list=[],email='', first_name='User', institution_id=0,
