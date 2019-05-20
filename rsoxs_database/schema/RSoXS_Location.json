@@ -48,9 +48,13 @@
     },
     "priority": {
       "type": "number"
+    },
+    "name": {
+      "type": "string"
     }
   },
   "required": [
+    "name",
     "location_list",
     "display",
     "favorite",

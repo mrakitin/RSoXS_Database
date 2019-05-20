@@ -45,6 +45,9 @@
     },
     "priority": {
       "type": "number"
+    },
+    "name": {
+      "type": "string"
     }
   },
   "required": [

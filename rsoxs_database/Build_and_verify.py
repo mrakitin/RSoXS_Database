@@ -84,11 +84,12 @@ def build_and_verify_sample(*, sample_name='test', sample_desc='testing',
     return sample
 
 
-def build_and_verify_location(*,location_list=[],display='private', favorite=False,
+def build_and_verify_location(*,name,location_list=[],display='private', favorite=False,
                               creator_id=0, sample=False, config=False, priority=0):
 
     location = {
         "location_list": location_list,
+        "name": name,
         "display": display,
         "favorite": favorite,
         "creator_ID": creator_id,
@@ -136,10 +137,11 @@ def build_and_verify_holder(*, holder_id=0, holder_name='Default', primary_user_
     return holder
 
 
-def build_and_verify_acquisition(*,plan_name='none',detectors=[], motors=[], positions=[], display='private',
+def build_and_verify_acquisition(*,name,plan_name='none',detectors=[], motors=[], positions=[], display='private',
                                  favorite=False, creator_id=0, priority=0):
 
     acquisition = {
+        "name": name,
         "plan_name": plan_name,
         "detectors": detectors,
         "motors": motors,
