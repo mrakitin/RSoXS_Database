@@ -147,7 +147,36 @@ def new_bar():
         slotname = input('move, then add another slot name for this location (blank to end): ')
     print('added {} slots'.format(len(slots)))
 
+
 def new_slot_nere(slot_name):
     return name
     # use the current sample position and bar, and add a slot entry to the bar with that location and the input name
 
+
+def multiple_choice(message = 'Please choose from these options: ',choices=[],default=0):
+    numoptions = len(choices)
+    if numoptions < 1:
+        return ''
+    elif numoptions == 1:
+        return choices[0]
+    print(message)
+    letters = list(map(chr, range(97, 97+numoptions)))
+    for (option, letter) in zip(choices, letters):
+        print(' ({}) : {}'.format(letter,option))
+    letterchoice = input('Choose an option {}-{}? (default is {}) :'.format(
+                                                            letters[0],
+                                                            letters[-1],
+                                                            letters[default])
+    )
+    if letterchoice is '':
+        letterchoice = letters[default]
+    while letterchoice not in letters:
+        print("invalid option")
+        letterchoice = input('Choose an option {}-{}? (default is {}) :'.format(
+            letters[0],
+            letters[-1],
+            letters[default])
+        )
+        if letterchoice is '':
+            letterchoice = letters[default]
+    return letters.index(letterchoice)
