@@ -89,6 +89,9 @@
             "acquisition_id": {
               "type": "number"
             },
+            "exposure_multiple": {
+              "type": "number"
+            },
             "location_id": {
               "type": "number"
             },
